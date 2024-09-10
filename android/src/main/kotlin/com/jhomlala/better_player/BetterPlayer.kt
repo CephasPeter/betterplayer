@@ -59,6 +59,7 @@ import com.google.android.exoplayer2.util.Util
 import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.getDataSourceFactory
 import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.getUserAgent
 import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.isHTTP
+import com.jhomlala.better_player.CustomDefaultLoadControl
 import java.io.File
 import java.lang.Exception
 import java.lang.IllegalStateException
