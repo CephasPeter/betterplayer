@@ -542,6 +542,5 @@ class BetterPlayerPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
         fun stopListening() {
             methodChannel.setMethodCallHandler(null)
         }
-
     }
 }
