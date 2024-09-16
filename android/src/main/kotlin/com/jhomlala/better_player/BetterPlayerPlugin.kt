@@ -544,8 +544,4 @@ class BetterPlayerPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
         }
 
     }
-
-    companion object {
-        
-    }
 }
