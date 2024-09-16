@@ -56,10 +56,11 @@ import com.google.android.exoplayer2.trackselection.TrackSelectionOverride
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSource
 import com.google.android.exoplayer2.util.Util
+import com.jhomlala.better_player.CustomDefaultLoadControl
 import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.getDataSourceFactory
 import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.getUserAgent
 import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.isHTTP
-import com.jhomlala.better_player.CustomDefaultLoadControl
+import com.jhomlala.better_player.QueuingEventSink
 import java.io.File
 import java.lang.Exception
 import java.lang.IllegalStateException
