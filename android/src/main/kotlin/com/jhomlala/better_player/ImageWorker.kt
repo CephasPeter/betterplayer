@@ -18,11 +18,15 @@ class ImageWorker(
     context: Context,
     params: WorkerParameters
 ) : Worker(context, params) {
+    private val TAG = "ImageWorker"
+    private val IMAGE_EXTENSION = ".png"
+    private val DEFAULT_NOTIFICATION_IMAGE_SIZE_PX = 256
+
     override fun doWork(): Result {
         return try {
             val imageUrl = inputData.getString(BetterPlayerPlugin.URL_PARAMETER)
                 ?: return Result.failure()
-            val bitmap: Bitmap? = if (DataSourceUtils.isHTTP(Uri.parse(imageUrl))) {
+            val bitmap: Bitmap? = if (DataSourceUtils().isHTTP(Uri.parse(imageUrl))) {
                 getBitmapFromExternalURL(imageUrl)
             } else {
                 getBitmapFromInternalURL(imageUrl)
@@ -105,11 +109,5 @@ class ImageWorker(
             Log.e(TAG, "Failed to get bitmap from internal url: $src")
             null
         }
-    }
-
-    companion object {
-        private const val TAG = "ImageWorker"
-        private const val IMAGE_EXTENSION = ".png"
-        private const val DEFAULT_NOTIFICATION_IMAGE_SIZE_PX = 256
     }
 }
