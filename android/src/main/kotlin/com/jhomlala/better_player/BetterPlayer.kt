@@ -57,9 +57,6 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSource
 import com.google.android.exoplayer2.util.Util
 import com.jhomlala.better_player.CustomDefaultLoadControl
-import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.getDataSourceFactory
-import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.getUserAgent
-import com.jhomlala.better_player.DataSourceUtils.DataSourceUtils.isHTTP
 import com.jhomlala.better_player.QueuingEventSink
 import java.io.File
 import java.lang.Exception
@@ -133,7 +130,7 @@ internal class BetterPlayer(
         isInitialized = false
         val uri = Uri.parse(dataSource)
         var dataSourceFactory: DataSource.Factory?
-        val userAgent = getUserAgent(headers)
+        val userAgent = DataSourceUtils().getUserAgent(headers)
         if (licenseUrl != null && licenseUrl.isNotEmpty()) {
             val httpMediaDrmCallback =
                 HttpMediaDrmCallback(licenseUrl, DefaultHttpDataSource.Factory())
@@ -179,8 +176,8 @@ internal class BetterPlayer(
         } else {
             drmSessionManager = null
         }
-        if (isHTTP(uri)) {
-            dataSourceFactory = getDataSourceFactory(userAgent, headers)
+        if (DataSourceUtils().isHTTP(uri)) {
+            dataSourceFactory = DataSourceUtils().getDataSourceFactory(userAgent, headers)
             if (useCache && maxCacheSize > 0 && maxCacheFileSize > 0) {
                 dataSourceFactory = CacheDataSourceFactory(
                     context,
